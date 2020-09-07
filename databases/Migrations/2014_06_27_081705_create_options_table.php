@@ -22,7 +22,7 @@ class CreateOptionsTable extends Migration
             $table->string('name')->unique();
             $table->string('type')->default('text');
             $table->string('placeholder');
-            $table->json('value')->nullable();
+            $table->text('value')->nullable();
             $table->boolean('required')->default(false);
             $table->boolean('multiple')->default(false);
             $table->integer('order')->default(1);
@@ -34,24 +34,10 @@ class CreateOptionsTable extends Migration
                 ->on('option_groups')
                 ->onDelete('cascade');
         });
-
-        Schema::create('optiongables', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('option_id');
-            $table->morphs('optiongable');
-            $table->text('content')->nullable();
-            $table->timestamps();
-
-            $table->foreign('option_id')
-                ->references('id')
-                ->on('options')
-                ->onDelete('cascade');
-        });
     }
 
     public function down()
     {
-        Schema::dropIfExists('optiongables');
         Schema::dropIfExists('options');
         Schema::dropIfExists('option_groups');
     }

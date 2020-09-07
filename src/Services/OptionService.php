@@ -16,7 +16,7 @@ class OptionService
 
     public function prepareData(array $data)
     {
-        if(isset($data['value'])){
+        if (isset($data['value'])) {
             $data['value'] = collect(explode(',', $data['value']));
         }
         return $data;
@@ -29,6 +29,7 @@ class OptionService
      * @param array $formattedOptions
      * @return array
      */
+    /*
     public function formatOptionsForRelationships(array $data, array $formattedOptions = [])
     {
         $options = $this->encodeOptions($data);
@@ -42,13 +43,14 @@ class OptionService
             return $formattedOptions;
         }
     }
-
+    */
     /**
      * Aqui formatamos os options com a chave(name) e o valor(content) para visualização
      * Aqui retornamos somente options que estejam cadastrados no sistema
      * @param array $data
      * @return array|mixed
      */
+    /*
     public function encodeOptions(array $data)
     {
         $formattedOptions = isset($data['options']) && is_array($data['options']) ? $data['options'] : [];
@@ -60,5 +62,5 @@ class OptionService
         }
         return $formattedOptions;
     }
-
+    */
 }

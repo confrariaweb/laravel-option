@@ -15,9 +15,8 @@
         }
     ],
     "require": {
-        "laravelcollective/html": "^6",
-        "confrariaweb/laravel-select2": "dev-master",
-        "confrariaweb/laravel-vendor": "dev-master"
+        "confrariaweb/laravel-vendor": "dev-master",
+        "laravelcollective/html": ">=6.0"
     },
     "autoload": {
         "files": [
@@ -26,7 +25,8 @@
             "src/Helpers/option_input.php"
         ],
         "psr-4": {
-            "ConfrariaWeb\\Option\\": "src"
+            "ConfrariaWeb\\Option\\": "src",
+            "ConfrariaWeb\\Option\\Databases\\Seeds\\": "databases/Seeds"
         }
     },
     "extra": {
