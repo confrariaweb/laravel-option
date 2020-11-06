@@ -2,10 +2,13 @@
 
 namespace ConfrariaWeb\Option\Providers;
 
+use ConfrariaWeb\Option\Components\Option;
 use ConfrariaWeb\Option\Contracts\OptionGroupContract;
 use ConfrariaWeb\Option\Repositories\OptionGroupRepository;
 use ConfrariaWeb\Option\Services\OptionGroupService;
+use ConfrariaWeb\Site\Models\Site;
 use ConfrariaWeb\Vendor\Traits\ProviderTrait;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use ConfrariaWeb\Option\Contracts\OptionContract;
 use ConfrariaWeb\Option\Repositories\OptionRepository;
@@ -17,13 +20,16 @@ class OptionServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        //$this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
         //$this->loadRoutesFrom(__DIR__ . '/../Routes/api.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../../databases/Migrations');
-        $this->loadTranslationsFrom(__DIR__ . '/../Translations', 'option');
+        //$this->loadMigrationsFrom(__DIR__ . '/../../databases/Migrations');
+        //$this->loadTranslationsFrom(__DIR__ . '/../Translations', 'option');
         $this->loadViewsFrom(__DIR__ . '/../Views', 'option');
         $this->publishes([__DIR__ . '/../../config/cw_option.php' => config_path('cw_option.php')], 'config');
-        $this->registerSeedsFrom(__DIR__ . '/../../databases/Seeds');
+        //$this->registerSeedsFrom(__DIR__ . '/../../databases/Seeds');
+
+        //Blade::include('option::partials.forms.option', 'option');
+        Blade::component('option', Option::class);
     }
 
     public function register()
